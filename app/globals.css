@@ -1,0 +1,679 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base colors */
+    --background: 220 30% 98%;
+    --foreground: 220 25% 10%;
+
+    /* Card colors */
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 10%;
+
+    /* UI element colors */
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 10%;
+
+    /* Primary colors - using gold */
+    --primary: 43 35% 65%;
+    --primary-foreground: 220 25% 10%;
+
+    /* Secondary colors - using neutral */
+    --secondary: 220 10% 96%;
+    --secondary-foreground: 220 25% 10%;
+
+    /* Muted colors */
+    --muted: 220 10% 96%;
+    --muted-foreground: 220 15% 40%;
+
+    /* Accent colors - using gold */
+    --accent: 43 35% 92%;
+    --accent-foreground: 220 25% 10%;
+
+    /* Destructive colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Border and input colors */
+    --border: 220 15% 90%;
+    --input: 220 15% 90%;
+    --ring: 43 35% 65%;
+
+    /* Border radius */
+    --radius: 0.5rem;
+
+    /* Gold color variables */
+    --gold-50: 43 30% 97%;
+    --gold-100: 43 40% 89%;
+    --gold-200: 43 40% 72%;
+    --gold-300: 43 35% 65%;
+    --gold-400: 43 35% 59%;
+    --gold-500: 43 35% 52%;
+    --gold-600: 43 35% 45%;
+    --gold-700: 43 35% 38%;
+    --gold-800: 43 35% 31%;
+    --gold-900: 43 35% 24%;
+    --gold-950: 43 35% 17%;
+
+    /* Neutral color variables */
+    --neutral-50: 220 5% 97%;
+    --neutral-100: 220 5% 94%;
+    --neutral-200: 220 5% 86%;
+    --neutral-300: 220 5% 74%;
+    --neutral-400: 220 5% 60%;
+    --neutral-500: 220 5% 48%;
+    --neutral-600: 220 5% 39%;
+    --neutral-700: 220 5% 32%;
+    --neutral-800: 220 5% 27%;
+    --neutral-900: 220 5% 22%;
+    --neutral-950: 220 5% 16%;
+
+    /* Chart colors */
+    --chart-1: 43 40% 72%;
+    --chart-2: 43 35% 65%;
+    --chart-3: 43 35% 52%;
+    --chart-4: 43 35% 38%;
+
+    /* Sidebar colors */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 25% 10%;
+    --sidebar-primary: 43 35% 65%;
+    --sidebar-primary-foreground: 220 25% 10%;
+    --sidebar-accent: 220 10% 96%;
+    --sidebar-accent-foreground: 220 25% 10%;
+    --sidebar-border: 220 15% 90%;
+    --sidebar-ring: 43 35% 65%;
+
+    /* Gold shorthand */
+    --gold: 43 35% 65%;
+  }
+
+  .dark {
+    /* Base colors */
+    --background: 220 25% 10%;
+    --foreground: 220 10% 95%;
+
+    /* Card colors */
+    --card: 220 25% 12%;
+    --card-foreground: 220 10% 95%;
+
+    /* UI element colors */
+    --popover: 220 25% 12%;
+    --popover-foreground: 220 10% 95%;
+
+    /* Primary colors - using gold */
+    --primary: 43 35% 65%;
+    --primary-foreground: 220 25% 10%;
+
+    /* Secondary colors - using neutral */
+    --secondary: 220 25% 18%;
+    --secondary-foreground: 220 10% 95%;
+
+    /* Muted colors */
+    --muted: 220 25% 18%;
+    --muted-foreground: 220 10% 70%;
+
+    /* Accent colors - using gold */
+    --accent: 43 35% 25%;
+    --accent-foreground: 220 10% 95%;
+
+    /* Destructive colors */
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 220 10% 95%;
+
+    /* Border and input colors */
+    --border: 220 25% 20%;
+    --input: 220 25% 20%;
+    --ring: 43 35% 65%;
+
+    /* Chart colors */
+    --chart-1: 43 40% 72%;
+    --chart-2: 43 35% 65%;
+    --chart-3: 43 35% 52%;
+    --chart-4: 43 35% 38%;
+
+    /* Sidebar colors */
+    --sidebar-background: 220 25% 8%;
+    --sidebar-foreground: 220 10% 95%;
+    --sidebar-primary: 43 35% 65%;
+    --sidebar-primary-foreground: 220 25% 10%;
+    --sidebar-accent: 220 25% 15%;
+    --sidebar-accent-foreground: 220 10% 95%;
+    --sidebar-border: 220 25% 20%;
+    --sidebar-ring: 43 35% 65%;
+
+    /* Gold shorthand */
+    --gold: 43 35% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-sans font-bold tracking-tight;
+  }
+  p,
+  li,
+  blockquote {
+    @apply font-sans;
+  }
+  .description,
+  .text-description {
+    @apply font-sans text-base leading-relaxed text-muted-foreground;
+  }
+}
+
+/* Typography */
+.heading-1 {
+  @apply text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl;
+}
+
+.heading-2 {
+  @apply text-3xl font-bold tracking-tight md:text-4xl;
+}
+
+.heading-3 {
+  @apply text-2xl font-bold tracking-tight md:text-3xl;
+}
+
+.heading-4 {
+  @apply text-xl font-bold tracking-tight md:text-2xl;
+}
+
+/* Spacing System */
+.section-padding {
+  @apply py-12 md:py-16 lg:py-24;
+}
+
+.section-margin {
+  @apply my-12 md:my-16 lg:my-24;
+}
+
+/* Container System */
+.container-sm {
+  @apply mx-auto max-w-3xl px-4 sm:px-6 lg:px-8;
+}
+
+.container-md {
+  @apply mx-auto max-w-5xl px-4 sm:px-6 lg:px-8;
+}
+
+.container-lg {
+  @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+/* Grid System */
+.grid-auto-fit {
+  @apply grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+}
+
+.grid-auto-fit-lg {
+  @apply grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3;
+}
+
+.grid-auto-fit-sm {
+  @apply grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5;
+}
+
+/* Gold theme colors */
+:root {
+  --gold-50: #f9f7f1;
+  --gold-100: #eee9d7;
+  --gold-200: #d4c89d;
+  --gold-300: #c8b681;
+  --gold-400: #b9a772;
+  --gold-500: #a99963;
+  --gold-600: #998a54;
+  --gold-700: #897b45;
+  --gold-800: #796c36;
+  --gold-900: #695d27;
+  --gold-950: #3d3520;
+}
+
+/* Modern Card Styles */
+.card {
+  @apply bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300;
+}
+
+.card-header {
+  @apply p-4 border-b border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800;
+}
+
+.card-title {
+  @apply text-lg font-semibold flex items-center;
+}
+
+.card-icon {
+  @apply mr-2 text-gold-400 dark:text-gold-300;
+}
+
+.card-content {
+  @apply p-4;
+}
+
+.card-footer {
+  @apply p-4 border-t border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800;
+}
+
+.card-hover {
+  @apply hover:border-gold-300 dark:hover:border-gold-500 hover:shadow-lg hover:shadow-gold-100/20 dark:hover:shadow-gold-900/10;
+}
+
+/* Button Styles */
+.btn-primary {
+  @apply bg-gold-400 hover:bg-gold-500 text-black font-medium py-2 px-4 rounded-md transition-colors;
+}
+
+.btn-secondary {
+  @apply bg-neutral-200 hover:bg-neutral-300 dark:bg-neutral-700 dark:hover:bg-neutral-600 text-neutral-800 dark:text-neutral-100 font-medium py-2 px-4 rounded-md transition-colors;
+}
+
+.btn-outline {
+  @apply border border-gold-300 dark:border-gold-500 text-gold-600 dark:text-gold-300 hover:bg-gold-50 dark:hover:bg-gold-900/20 font-medium py-2 px-4 rounded-md transition-colors;
+}
+
+/* Icon Styles */
+.icon-gold {
+  @apply text-gold-400 dark:text-gold-300;
+}
+
+.icon-neutral {
+  @apply text-neutral-500 dark:text-neutral-400;
+}
+
+.icon-dark {
+  @apply text-neutral-800 dark:text-neutral-200;
+}
+
+.icon-light {
+  @apply text-neutral-400 dark:text-neutral-500;
+}
+
+/* Badge Styles */
+.badge {
+  @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold;
+}
+
+.badge-gold {
+  @apply bg-gold-100 text-gold-800 dark:bg-gold-900/30 dark:text-gold-300;
+}
+
+.badge-neutral {
+  @apply bg-neutral-100 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200;
+}
+
+.badge-outline {
+  @apply border border-gold-300/50 text-gold-700 dark:border-gold-500/30 dark:text-gold-300;
+}
+
+/* Focus Styles */
+.focus-ring {
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+}
+
+/* Hover Effects */
+.hover-lift {
+  @apply transition-transform duration-300 hover:-translate-y-1;
+}
+
+.hover-scale {
+  @apply transition-transform duration-300 hover:scale-105;
+}
+
+.hover-glow {
+  @apply transition-shadow duration-300 hover:shadow-lg hover:shadow-gold-300/20 dark:hover:shadow-gold-900/20;
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.5s ease-in-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Wallet Adapter Custom Styles */
+.wallet-adapter-button-custom {
+  background-color: #c8b681 !important; /* Using gold-300 */
+  color: #25262d !important; /* Using neutral-950 */
+  font-family: inherit !important;
+  font-size: 0.875rem !important;
+  height: 2.5rem !important;
+  padding: 0 1rem !important;
+  border-radius: 0.375rem !important;
+  font-weight: 500 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition-duration: 150ms !important;
+}
+
+.wallet-adapter-button-custom:hover {
+  background-color: #b9a772 !important; /* Using gold-400 */
+}
+
+.wallet-adapter-button-custom:focus {
+  outline: 2px solid transparent !important;
+  outline-offset: 2px !important;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
+}
+
+.wallet-adapter-button-custom:disabled {
+  pointer-events: none !important;
+  opacity: 0.5 !important;
+}
+
+/* Wallet Modal Custom Styles */
+.wallet-adapter-modal-wrapper {
+  background-color: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+}
+
+.wallet-adapter-modal-button-close {
+  background-color: hsl(var(--secondary)) !important;
+}
+
+.wallet-adapter-modal-title {
+  color: hsl(var(--foreground)) !important;
+}
+
+.wallet-adapter-modal-list .wallet-adapter-button {
+  background-color: hsl(var(--card)) !important;
+  color: hsl(var(--card-foreground)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+}
+
+.wallet-adapter-modal-list .wallet-adapter-button:hover {
+  background-color: hsl(var(--accent)) !important;
+  color: hsl(var(--accent-foreground)) !important;
+}
+
+/* NFT Ownership Indicator */
+.nft-owned-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(200, 182, 129, 0.9); /* Using gold-300 with transparency */
+  color: #25262d; /* Using neutral-950 */
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+}
+
+.nft-owned-border {
+  border: 2px solid #c8b681; /* Using gold-300 */
+}
+
+/* Character card styles */
+.character-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background-color: #25262d; /* Using neutral-950 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.character-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+}
+
+.character-card-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.character-card:hover .character-card-image {
+  transform: scale(1.05);
+}
+
+.character-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  background: linear-gradient(to top, rgba(37, 38, 45, 0.9), rgba(37, 38, 45, 0));
+  color: white;
+}
+
+.character-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #c8b681; /* Using gold-300 */
+}
+
+.character-card-description {
+  font-size: 0.875rem;
+  opacity: 0.9;
+}
+
+.character-card-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #c8b681; /* Using gold-300 */
+  color: #25262d; /* Using neutral-950 */
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c8b681; /* Using gold-300 */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b9a772; /* Using gold-400 */
+}
+
+/* Modern Glass Effect */
+.glass {
+  @apply bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md border border-white/20 dark:border-neutral-700/20;
+}
+
+/* Modern Stat Card */
+.stat-card {
+  @apply flex flex-col p-4 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900;
+}
+
+.stat-card-header {
+  @apply flex items-center justify-between mb-2;
+}
+
+.stat-card-title {
+  @apply text-sm font-medium text-neutral-500 dark:text-neutral-400;
+}
+
+.stat-card-icon {
+  @apply text-gold-400 dark:text-gold-300;
+}
+
+.stat-card-value {
+  @apply text-2xl font-bold text-neutral-900 dark:text-white;
+}
+
+.stat-card-description {
+  @apply text-xs text-neutral-500 dark:text-neutral-400 mt-1;
+}
+
+/* Modern Data Grid */
+.data-grid {
+  @apply w-full border border-neutral-200 dark:border-neutral-800 rounded-lg overflow-hidden;
+}
+
+.data-grid-header {
+  @apply bg-neutral-100 dark:bg-neutral-800 border-b border-neutral-200 dark:border-neutral-700;
+}
+
+.data-grid-header-cell {
+  @apply px-4 py-3 text-left text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider;
+}
+
+.data-grid-row {
+  @apply bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors;
+}
+
+.data-grid-cell {
+  @apply px-4 py-3 text-sm text-neutral-900 dark:text-neutral-200;
+}
+
+/* Modern Form Elements */
+.form-input {
+  @apply w-full px-3 py-2 bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gold-300 dark:focus:ring-gold-500 focus:border-gold-300 dark:focus:border-gold-500;
+}
+
+.form-select {
+  @apply w-full px-3 py-2 bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gold-300 dark:focus:ring-gold-500 focus:border-gold-300 dark:focus:border-gold-500;
+}
+
+.form-checkbox {
+  @apply h-4 w-4 text-gold-400 dark:text-gold-300 border-neutral-300 dark:border-neutral-700 rounded focus:ring-gold-300 dark:focus:ring-gold-500;
+}
+
+.form-radio {
+  @apply h-4 w-4 text-gold-400 dark:text-gold-300 border-neutral-300 dark:border-neutral-700 focus:ring-gold-300 dark:focus:ring-gold-500;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1;
+}
+
+.form-helper {
+  @apply mt-1 text-xs text-neutral-500 dark:text-neutral-400;
+}
+
+/* Modern Navigation */
+.nav-link {
+  @apply px-3 py-2 text-sm font-medium rounded-md transition-colors;
+}
+
+.nav-link-default {
+  @apply text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800;
+}
+
+.nav-link-active {
+  @apply text-gold-600 dark:text-gold-300 bg-gold-50 dark:bg-gold-900/20;
+}
+
+/* Modern Tabs */
+.tabs {
+  @apply flex space-x-1 p-1 bg-neutral-100 dark:bg-neutral-800 rounded-lg;
+}
+
+.tab {
+  @apply px-3 py-2 text-sm font-medium rounded-md transition-colors;
+}
+
+.tab-default {
+  @apply text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white;
+}
+
+.tab-active {
+  @apply bg-white dark:bg-neutral-900 text-gold-600 dark:text-gold-300 shadow-sm;
+}
+
+/* Modern Alerts */
+.alert {
+  @apply p-4 rounded-lg border;
+}
+
+.alert-info {
+  @apply bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800 text-blue-800 dark:text-blue-300;
+}
+
+.alert-success {
+  @apply bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800 text-green-800 dark:text-green-300;
+}
+
+.alert-warning {
+  @apply bg-gold-50 dark:bg-gold-900/20 border-gold-200 dark:border-gold-800 text-gold-800 dark:text-gold-300;
+}
+
+.alert-error {
+  @apply bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800 text-red-800 dark:text-red-300;
+}
+
+/* Modern Tooltips */
+.tooltip {
+  @apply absolute z-10 px-2 py-1 text-xs font-medium text-white bg-neutral-900 dark:bg-neutral-800 rounded shadow-lg;
+}
+
+/* Modern Badges */
+.badge-modern {
+  @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium;
+}
+
+.badge-modern-gold {
+  @apply bg-gold-100 dark:bg-gold-900/30 text-gold-800 dark:text-gold-300;
+}
+
+.badge-modern-neutral {
+  @apply bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-300;
+}
+
+.badge-modern-outline {
+  @apply border border-current bg-transparent;
+}
+
+/* Modern Dividers */
+.divider {
+  @apply h-px w-full bg-neutral-200 dark:bg-neutral-800 my-4;
+}
+
+.divider-vertical {
+  @apply w-px h-full bg-neutral-200 dark:bg-neutral-800 mx-4;
+}
