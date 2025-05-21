@@ -2,7 +2,7 @@
   <img src="public/favicon.png" alt="Gold Digger Logo" width="120" height="120" />
 </p>
 
-<h1 align="center">Gold Digger - Web3 Staking Platform and Web UI/UX Demo</h1>
+<h1 align="center"> Gold Digger Staking Protocol - Demo</h1>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Solana-362fd9?style=for-the-badge&logo=solana&logoColor=white" alt="Solana" />
@@ -15,137 +15,206 @@
   Gold Digger is a comprehensive Solana-based platform that combines NFT marketplace functionality, DeFi features, and AI-powered tools to create a unique ecosystem for crypto enthusiasts.
 </p>
 
-## ✨ Features
+# 🏆 Gold Digger - Staking Protocol
 
-- **NFT Staking**: Stake your Jailbirds and Gold Digger NFTs to earn rewards
-- **Token Staking**: Stake DIGR and JAIL tokens with flexible lock periods
-- **Staking Analytics**: Track your staking performance and rewards
-- **Leaderboard**: Compete with other stakers for the top positions
-- **Calculators**: Plan your staking strategy with our compound interest and APR/APY calculators
-- **Missions**: Complete missions with your NFTs to earn additional rewards
-- **Rarity System**: Leverage the rarity of your NFTs for increased staking power
+A powerful staking system on **Solana** supporting:
 
-## 🚀 Getting Started
+* 🔒 Compressed NFT staking (e.g., GOLD via Bubblegum)
+* 💰 Reward emissions in **DIGR** SPL token
+* 📈 Auto-compounding into secondary DIGR staking
+* 🕰️ Vesting with cliff + linear unlocks
+* 🧠 Smart rarity-based reward boosts
+* 🔄 NFT restaking & reward tracking
+* ⚡ Real-time event indexing (Helius-compatible)
 
-### Prerequisites
+---
 
-- Node.js 18+
-- npm or yarn
-- Solana wallet (Phantom, Solflare, etc.)
+## 🧱 Architecture Overview
 
-### Installation
+```
+Frontend (React, Helius SDK)
+   └── Stake, Unstake, Claim, Compound
+         ↓
+Anchor Program (staking_pool.rs)
+   ├── Pool (global settings)
+   ├── StakeAccount (per user)
+   ├── VestingAccount (DIGR vesting)
+   └── CollectionWhitelist (NFT gates)
+         ↓
+DIGR Token Mint
+   └── Auto-minted or vested to user
+```
 
-1. Clone the repository:
-\`\`\`bash
-git clone https://github.com/gold-digg3r/staking-platform-demo.git
-cd staking-platform-demo
-\`\`\`
+---
 
-2. Install dependencies:
-\`\`\`bash
-npm install
-# or
-yarn
-\`\`\`
+## 🚀 Features
 
-3. Set up environment variables:
-\`\`\`bash
-cp .env.example .env.local
-\`\`\`
+### ✅ Staking
 
-4. Start the development server:
-\`\`\`bash
-npm run dev
-# or
-yarn dev
-\`\`\`
+* Stake **compressed NFTs** (cNFTs) from approved collections
+* Proof-verified via **Bubblegum + Merkle Root**
+* Rarity-based reward multipliers
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+### 💸 DIGR Rewards
 
-## 🔧 Environment Variables
+* DIGR SPL token distributed on claim
+* Configurable reward rates per pool
+* Claimed DIGR goes into vesting escrow
 
-| Variable | Description |
-|----------|-------------|
-| `NEXT_PUBLIC_SOLANA_NETWORK` | Solana network to connect to (devnet, testnet, mainnet-beta) |
-| `NEXT_PUBLIC_RPC_ENDPOINT` | Custom RPC endpoint (optional) |
-| `DIGR_TOKEN_MINT` | DIGR token mint address |
-| `JAIL_TOKEN_MINT` | JAIL token mint address |
-| `JAILBIRDS_COLLECTION_ADDRESS` | Jailbirds collection address |
-| `GOLD_DIGGER_COLLECTION_ADDRESS` | Gold Digger collection address |
-| `NFT_STAKING_ENABLED` | Enable NFT staking feature |
-| `TOKEN_STAKING_ENABLED` | Enable token staking feature |
-| `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anonymous key |
+### 🧠 Vesting & Cliff
 
-## 📁 Project Structure
+* VestingAccount per user
+* Supports:
 
-- `/app`: Next.js app router pages
-- `/components`: React components
-- `/lib`: Utility functions and services
-- `/public`: Static assets
-- `/server`: Server-side code and API routes
-- `/data`: Static data and configuration
-- `/hooks`: Custom React hooks
+  * Cliff (e.g., 7 days no unlock)
+  * Gradual unlock over time (e.g., 30 days)
+* Fully claimable after full vesting period
 
-## 🪙 Tokens
+### 🔁 Auto-Compounding
 
-<div style="display: flex; align-items: center; margin-bottom: 10px;">
-  <img src="public/digr.svg" alt="DIGR Token" width="24" height="24" style="margin-right: 10px;" />
-  <strong>DIGR</strong> - The primary utility token of the Gold Digger ecosystem
-</div>
+* Re-stake earned DIGR into DIGR staking pool
+* Streak-based boosts (optional)
+* Tracks compounding state on-chain
 
-<div style="display: flex; align-items: center; margin-bottom: 10px;">
-  <img src="public/gold-token-icon.png" alt="GOLD Token" width="24" height="24" style="margin-right: 10px;" />
-  <strong>GOLD</strong> - Token associated with the Gold Digger NFT collection
-</div>
+### ⚙️ Admin Controls
 
-<div style="display: flex; align-items: center;">
-  <img src="public/jail.png" alt="JAIL Token" width="24" height="24" style="margin-right: 10px;" />
-  <strong>JAIL</strong> - Token associated with the Jailbirds NFT collection
-</div>
+* Pause / resume pools
+* Update reward rates
+* Whitelist collections
+* Slash unvested rewards
 
-## 🔄 Staking Mechanics
+---
 
-Gold Digger implements a sophisticated staking system with the following features:
+## 💻 Frontend Instruction Formats (Helius SDK Style)
 
-- **NFT Staking**: Stake NFTs from supported collections to earn DIGR tokens
-- **Token Staking**: Stake DIGR, GOLD, or JAIL tokens with various lock periods for higher APY
-- **Rarity Multipliers**: Higher rarity NFTs provide increased staking power
-- **Auto-compounding**: Automatically reinvest rewards for exponential growth
-- **Leaderboard Rewards**: Top stakers receive additional bonuses
+```ts
+export interface StakeCNFTInstruction {
+  programId: string;
+  accounts: {
+    pool: string;
+    stakeAccount: string;
+    nftMint: string;
+    merkleRoot: string;
+    user: string;
+    systemProgram: string;
+  };
+  args: {
+    merkleProof: string[];
+    leaf: string;
+    rarityMultiplier: number;
+  };
+}
+```
 
-## 🎮 Missions
+```ts
+export interface AutoCompoundInstruction {
+  programId: string;
+  accounts: {
+    pool: string;
+    stakeAccount: string;
+    vestingAccount: string;
+    digrMint: string;
+    digrStakeAccount: string;
+    user: string;
+    tokenProgram: string;
+  };
+}
+```
 
-Complete missions with your staked NFTs to earn additional rewards:
+---
 
-- **Mission Types**: Various mission types with different difficulty levels
-- **Team Composition**: Strategic team building with complementary abilities
-- **Reward Structure**: Earn DIGR tokens, rare NFT drops, and leaderboard points
-- **Success Rates**: Higher rarity NFTs increase mission success probability
+## 📦 State Accounts
 
-## 📊 Analytics
+| Account               | Description                             |
+| --------------------- | --------------------------------------- |
+| `Pool`                | Pool settings (rates, lock, limits)     |
+| `StakeAccount`        | User NFT stake info (timestamps, NFT)   |
+| `VestingAccount`      | DIGR vesting (cliff, unlock, claimable) |
+| `CollectionWhitelist` | Approved NFT collections                |
 
-Track your staking performance with comprehensive analytics:
+---
 
-- **Staking Dashboard**: Overview of all your staked assets
-- **Reward Projections**: Estimate future rewards based on current rates
-- **Historical Performance**: View your staking history and earnings
-- **Leaderboard Position**: Track your ranking among other stakers
+## 🔊 Emitted Events
 
-## 🛠️ Technologies
+| Event            | Purpose                     |
+| ---------------- | --------------------------- |
+| `StakeEvent`     | User staked an NFT          |
+| `UnstakeEvent`   | User unstaked an NFT        |
+| `ClaimEvent`     | DIGR reward claim initiated |
+| `CompoundEvent`  | DIGR auto-compounded        |
+| `VestingUpdated` | Vesting account updated     |
 
-- **Frontend**: Next.js, React, TypeScript, Tailwind CSS
-- **Blockchain**: Solana, Web3.js
-- **Authentication**: Wallet authentication (Phantom, Solflare)
-- **Database**: Supabase
-- **Styling**: shadcn/ui components
+Can be indexed via **Helius** or **Supabase Edge Functions**.
 
-## 📄 License
+---
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 🧪 Test Coverage
 
-## 🙏 Acknowledgments
+Includes unit tests for:
 
-- Solana Foundation
-- Next.js Team
-- shadcn/ui
+* [x] Stake / Claim / Unstake flow
+* [x] Vesting logic with cliff
+* [x] Admin updates + pausing
+* [x] Auto-compounding reward tracking
+* [x] Rarity multipliers + collection filtering
+
+Run tests:
+
+```bash
+anchor test
+```
+
+---
+
+## 🛠 Deployment
+
+### Environment
+
+* Solana Devnet or Mainnet
+* Anchor 0.29+
+* SPL Token Program
+* Bubblegum Merkle proofs (for cNFT verification)
+
+### Deploy
+
+```bash
+anchor build
+anchor deploy
+```
+
+---
+
+## 🧬 Optional Supabase Schema
+
+For frontend indexing:
+
+```sql
+CREATE TABLE user_stakes (
+  wallet TEXT,
+  nft_mint TEXT,
+  collection TEXT,
+  stake_time TIMESTAMP,
+  pool_id TEXT,
+  rarity INTEGER,
+  is_active BOOLEAN
+);
+
+CREATE TABLE digr_vesting (
+  wallet TEXT,
+  amount BIGINT,
+  claimed BIGINT,
+  cliff_end TIMESTAMP,
+  unlock_end TIMESTAMP,
+  last_claim TIMESTAMP
+);
+```
+
+---
+
+## 🧠 Future Plans
+
+* DAO reward boosts
+* NFT restaking streak logic
+* Leaderboards & community badges
+* GAMIFIED quests tied to staking behavior
+
